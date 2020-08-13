@@ -4,7 +4,7 @@ use crate::network::network::Network;
 use crate::network::mcpe::raknet::RaknetServer;
 use crate::network::mcpe::network_session::NetworkSession;
 use std::io::Read;
-use raknet_rs::server::ipc::RaknetToUserThreadEventReceiver;
+use raknet_rs::server::ipc::{RaknetToUserThreadEventReceiver, UserToRaknetMessageSender};
 
 pub struct RaknetInterface<'a> {
 	server: &'a Server,
@@ -13,4 +13,5 @@ pub struct RaknetInterface<'a> {
 	raknet: Arc<Mutex<RaknetServer>>,
 	sessions: Vec<NetworkSession>,
 	event_receiver: RaknetToUserThreadEventReceiver,
+	interface: UserToRaknetMessageSender
 }
