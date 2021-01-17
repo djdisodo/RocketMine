@@ -22,7 +22,7 @@ pub trait AdvancedNetworkInterface: NetworkInterface {
 	fn set_network(&mut self, network: Network);
 
 	/**
-	 * Sends a raw payload to the network interface, bypassing any sessions.
+	 * Sends a raw packet to the network interface, bypassing any sessions.
 	 */
 	fn send_raw_packet(&mut self, address: &IpAddr, payload: &[u8]);
 
