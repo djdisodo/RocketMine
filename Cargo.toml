@@ -9,8 +9,8 @@ edition = "2018"
 [dependencies]
 raknet-rs = { path = "raklib-rs" }
 regex = "1.3"
-log4rs = "0.13"
+log = "0.4"
 rand = "0.7"
 parking_lot = "0.11"
-env_logger = "0.8.2"
+simple_logger = "1.11"
 uuid = { version = "0.8", features = ["v4"] }

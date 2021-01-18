@@ -1,4 +1,3 @@
-use log4rs::Logger;
 use std::net::{SocketAddr, UdpSocket};
 use std::sync::Arc;
 use std::collections::VecDeque;
@@ -7,6 +6,7 @@ use raknet_rs::server::{ServerEventListener, ProtocolAcceptor, Server, ServerInt
 use parking_lot::Mutex;
 use std::time::Duration;
 use uuid::Uuid;
+use simple_logger::SimpleLogger;
 
 //pub mod network;
 //pub mod thread;
@@ -16,12 +16,13 @@ fn main() {
 }
 
 fn server() {
-    env_logger::init();
+    SimpleLogger::new().init().unwrap();
     let chan: Arc<Mutex<VecDeque<UserToRaknetMessage>>> = Default::default();
     let socket = std::net::UdpSocket::bind(("0.0.0.0", 19132)).unwrap();
     socket.set_ttl(255);
+    log::debug!("start");
     let mut server = Server::new(
-        123456789,
+        13253860892328930865,
         socket,
         1500,
         PA {},
@@ -29,7 +30,7 @@ fn server() {
         EL {}
     );
 
-    server.internal.lock().set_name("servername example".to_owned());
+    server.internal.lock().set_name("MCPE;Hello, World!;422;1.16.200;0;10;13253860892328930865;가슴이 웅장해진다;Survival;1;19132;19133;".to_owned());
     server.run();
 
 }
